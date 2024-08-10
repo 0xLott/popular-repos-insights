@@ -1,0 +1,18 @@
+query all_issues_query {
+  search(query: "stars:>0", type: REPOSITORY, first: 3, sort: STARS) {
+    edges {
+      node {
+        ... on Repository {
+          issues(first: 3) {
+            edges {
+              node {
+                id
+                closed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

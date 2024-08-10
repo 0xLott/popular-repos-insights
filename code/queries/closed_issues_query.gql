@@ -1,0 +1,18 @@
+query closed_issues_query {
+  search(query: "stars:>0", type: REPOSITORY, first: 1, sort: STARS) {
+    edges {
+      node {
+        ... on Repository {
+          issues(states: CLOSED, first: 1) {
+            edges {
+              node {
+                id
+                closed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
