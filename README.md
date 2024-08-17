@@ -16,18 +16,28 @@ Activate the virtual environment to use the isolated Python environment
 
 On Windows:
 ```bash
-source .venv/bin/activate
+source code\.venv/bin/activate
 ```
 
 On Linux or MacOS:
 ```bash
-.venv\Scripts\activate
+code\.venv\Scripts\activate
 ```
 
 ### Step 3
 With the virtual environment active, install the required packages
 ```bash
 pip install requests
+```
+
+```bash
+python -m pip install python-dotenv
+```
+
+### Step 5
+Run main.py
+```bash
+python3 code/main.py
 ```
 
 ---
