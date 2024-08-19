@@ -20,7 +20,8 @@ with open("code/queries/all_issues_query.gql", "r") as file:
 with open("code/queries/closed_issues_query.gql", "r") as file:
     closed_issues_query = file.read()
 
-# POST request to the specified endpoint URL with a GraphQL query (read in file) and headers, returning the response
+# POST request to the specified endpoint URL with a GraphQL query (read from file)
+# and headers, returning the response
 def run_query(query):
     response = requests.post(
         url,
@@ -40,11 +41,20 @@ def display_data(response):
     else:
         raise Exception(f"Failed to fetch repositories: {response.status_code}")
 
+# def aggregate_issues(response) {
+#     for edge in response['data']['search']['edges']:
+#         repository = edge['node']
+#         issues_count = len(repository['issues']['edges'])
+#         total_issues += issues_count
+#     return total_issues
+# }
+
 print(""" 
     Select query:
     1 - Closed issues
     2 - All issues
 """)
+
 option = input("Option: ")
 match option:
     case '1':

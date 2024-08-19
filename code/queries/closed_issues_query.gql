@@ -6,7 +6,6 @@ query ($num_repos: Int!, $num_issues: Int!) {
           id
           name
           stargazerCount
-          url
           issues(states: CLOSED, first: $num_issues) {
             edges {
             node {
