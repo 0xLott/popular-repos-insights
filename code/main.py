@@ -20,36 +20,36 @@ with open("code/queries/all_issues_query.gql", "r") as file:
 with open("code/queries/closed_issues_query.gql", "r") as file:
     closed_issues_query = file.read()
 
-# Send request
-response = requests.post(
-    url,
-    json={
-        "query": closed_issues_query,
-        "variables": {"num_repos": 99, "num_issues": 3}
-    },
-    headers=headers
-)
+# POST request to the specified endpoint URL with a GraphQL query (read in file) and headers, returning the response
+def run_query(query):
+    response = requests.post(
+        url,
+        json={
+            "query": query,
+            "variables": {"num_repos": 1, "num_issues": 3}
+        },
+        headers=headers
+    )
+    return response
 
-if response.status_code == 200:
-    data = response.json()
-    print("# Closed Issues:")
-    print(data)
-else:
-    raise Exception(f"Failed to fetch repositories: {response.status_code}")
+def display_data(response):
+    if response.status_code == 200:
+        data = response.json()
+        print("# All Issues:")
+        print(data)
+    else:
+        raise Exception(f"Failed to fetch repositories: {response.status_code}")
 
-# Send request
-response = requests.post(
-    url,
-    json={
-        "query": all_issues_query,
-        "variables": {"num_repos": 99, "num_issues": 100}
-    },
-    headers=headers
-)
-
-if response.status_code == 200:
-    data = response.json()
-    print("# All Issues:")
-    print(data)
-else:
-    raise Exception(f"Failed to fetch repositories: {response.status_code}")
+print(""" 
+    Select query:
+    1 - Closed issues
+    2 - All issues
+""")
+option = input("Option: ")
+match option:
+    case '1':
+        response = run_query(closed_issues_query)
+        display_data(response)
+    case '2':
+        response = run_query(all_issues_query)
+        display_data(response)
