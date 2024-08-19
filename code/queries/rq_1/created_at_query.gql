@@ -1,0 +1,13 @@
+query ($num_repos: Int!, $num_issues: Int!) {
+  search(query: "stars:>1 sort:stars-desc", type: REPOSITORY, first: $num_repos) {
+    edges {
+      node {
+        ... on Repository {
+          id
+          name
+          createdAt
+        }
+      }
+    }
+  }
+}

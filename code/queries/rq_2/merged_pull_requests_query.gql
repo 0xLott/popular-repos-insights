@@ -1,0 +1,15 @@
+query ($num_repos: Int!, $num_pull_requests: Int!) {
+  search(query: "stars:>1 sort:stars-desc", type: REPOSITORY, first: $num_repos) {
+    edges {
+      node {
+        ... on Repository {
+          id
+          name
+          pullRequests(states: [MERGED], first: $num_pull_requests) {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+}

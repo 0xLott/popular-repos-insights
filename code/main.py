@@ -15,9 +15,9 @@ headers = {
 url = "https://api.github.com/graphql"
 
 # Read GraphQL query files
-with open("code/queries/all_issues_query.gql", "r") as file:
+with open("code/queries/rq_06/all_issues_query.gql", "r") as file:
     all_issues_query = file.read()
-with open("code/queries/closed_issues_query.gql", "r") as file:
+with open("code/queries/rq_06/closed_issues_query.gql", "r") as file:
     closed_issues_query = file.read()
 
 # POST request to the specified endpoint URL with a GraphQL query (read from file)
