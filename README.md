@@ -5,23 +5,23 @@ A data-driven analysis of the top 1,000 starred open-source GitHub repositories 
 ## Examined metrics
 ### RQ-1: "Os sistemas populares são maduros/antigos?"
 *"Are popular systems mature/old?"*
-- `created_at`: the creation date of the top 1,000 GitHub repos
+- `created_at_median`: median value of days since creation date of the top 1,000 GitHub repos
 
 ### RQ-2: "Os sistemas populares recebem muita contribuição externa?"
 *"Do popular systems receive a lot of external contributions?"*
-- `merged_pull_requests`: number of merged pull requests in the top 1,000 GitHub repos
+- `merged_pull_requests_median`: median value of number of merged pull requests in the top 1,000 GitHub repos
 
 ### RQ-3: "Os sistemas populares lançam releases com frequência?"
 *"Do popular systems release frequently?"*
-- `total_releases`: number of releases in the top 1,000 GitHub repos
+- `total_releases_median`: median value of number of releases in the top 1,000 GitHub repos
 
 ### RQ-4: "Os sistemas populares são atualizados com frequência?"
 *"Are popular systems updated frequently?"*
-- `last_updated`: last update date of the top 1,000 GitHub repos
+- `last_updated_median`:  median value of minutes since last update date of the top 1,000 GitHub repos
 
 ### RQ-5: "Os sistemas populares são escritos nas linguagens mais populares?"
 *"Are popular systems written in the most popular languages?"*
-- `main_language`: primary programming languages used in the top 1,000 GitHub repos
+- `main_language`: frequency of primary programming languages used in the top 1,000 GitHub repos
 
 ### RQ-6: "Os sistemas populares possuem um alto percentual de issues fechadas?"
 *"Do popular systems have a high percentage of closed issues?"*
@@ -31,6 +31,8 @@ A data-driven analysis of the top 1,000 starred open-source GitHub repositories 
   ```math
     closed\_issues\_ratio = \frac{closed\_issues}{all\_issues}
   ```
+
+- `closed_issues_ratio_median`: median of closed-issues ratio from top 1,000 GitHub repos
 ---
 
 # Getting Started
@@ -70,8 +72,8 @@ pip install -r requirements.txt
 cd code
 ```
 
-2.3. Activate the virtual environment
-- Instructions can be found in step 1.2
+2.2. Activate the virtual environment
+- Instructions can be found in step 1.3
 
 2.3. Run program
 ```bash
