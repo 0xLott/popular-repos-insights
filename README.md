@@ -38,13 +38,11 @@ A data-driven analysis of the top 1,000 starred open-source GitHub repositories 
 ## 1. Virtual Environment setup
 
 1.1. Create a virtual environment in the root directory of your project
-
 ```bash
 python3 -m venv .venv
 ```
 
 1.2. Activate the virtual environment to use the isolated Python environment
-
 ```bash
 # On Windows:
 source code\.venv\bin\activate
@@ -56,19 +54,13 @@ code\.venv\Scripts\activate
 ```
 
 1.3. With the virtual environment active, install the required packages
-
 ```bash
-pip install requests
-```
-
-```bash
-python -m pip install python-dotenv
+pip install -r code\requirements.txt
 ```
 
 ## 2. Run
 
 2.1. Activate the virtual environment
-
 ```bash
 # On Windows:
 source code\.venv\bin\activate
@@ -80,9 +72,15 @@ code\.venv\Scripts\activate
 ```
 
 2.2. Run main.py
-
 ```bash
-python3 code\main.py
+cd code
+python3 main.py
+```
+
+2.3. Run stats.py
+```bash
+cd code
+python3 stats.py
 ```
 
 ---
