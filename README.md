@@ -37,6 +37,11 @@ A data-driven analysis of the top 1,000 starred open-source GitHub repositories 
 
 ## 1. Virtual Environment setup
 
+1.1 Navigate to "code" directory
+```bash
+cd code
+```
+
 1.1. Create a virtual environment in the root directory of your project
 ```bash
 python3 -m venv .venv
@@ -45,17 +50,17 @@ python3 -m venv .venv
 1.2. Activate the virtual environment to use the isolated Python environment
 ```bash
 # On Windows:
-source code\.venv\bin\activate
+source .venv/bin/activate
 ```
 
 ```bash
 # On Linux or MacOS:
-code\.venv\Scripts\activate
+.venv/Scripts/activate
 ```
 
 1.3. With the virtual environment active, install the required packages
 ```bash
-pip install -r code\requirements.txt
+pip install -r requirements.txt
 ```
 
 ## 2. Run
@@ -63,12 +68,12 @@ pip install -r code\requirements.txt
 2.1. Activate the virtual environment
 ```bash
 # On Windows:
-source code\.venv\bin\activate
+source .venv/bin/activate
 ```
 
 ```bash
 # On Linux or MacOS:
-code\.venv\Scripts\activate
+code/.venv/Scripts/activate
 ```
 
 2.2. Run main.py
