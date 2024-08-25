@@ -19,7 +19,6 @@ with open("queries/general_query.gql", "r") as file:
 with open("queries/reduced_query.gql", "r") as file:
     reduced_query = file.read()
 
-
 def run_query(query, variables):
     variables['cursor'] = ''
     total_repos = variables['num_repos']
@@ -28,7 +27,11 @@ def run_query(query, variables):
     def process_batch(batch_size):
         variables['num_repos'] = batch_size
         json = dispatch_request(query, variables).json()
-        display_data(json, retrieved_data)
+        
+        # Extract the nodes from the response if it's inside a 'node' key
+        nodes = json['data']['search']['edges']
+        for node in nodes:
+            retrieved_data.append(node['node'])
 
         variables['cursor'] = json['data']['search']['pageInfo']['endCursor']
         return json
@@ -49,7 +52,6 @@ def run_query(query, variables):
 
     write_data(retrieved_data)
 
-
 def dispatch_request(query, variables):
     response = requests.post(
         url,
@@ -62,7 +64,6 @@ def dispatch_request(query, variables):
 
     return response
 
-
 def get_unique_filename(base_path):
     counter = 0
     while True:
@@ -71,22 +72,17 @@ def get_unique_filename(base_path):
             return new_filename
         counter += 1
 
-
 def write_data(json):
-    csv_file_path = get_unique_filename('queries/results.csv')
-    headers = json[0].keys()
+    csv_file_path = get_unique_filename('queries/results/results.csv')
+
+    parsed_data = [ast.literal_eval(item) if isinstance(item, str) else item for item in json]
+
+    headers = parsed_data[0].keys()
 
     with open(csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=headers)
         writer.writeheader()
-        writer.writerows(json)
-
-
-def display_data(response, retrieved_data):
-    for node in response['data']['search']['edges']:
-        print(node)
-        retrieved_data.append(node)
-
+        writer.writerows(parsed_data)
 
 def option_tree(option):
     match option:
@@ -105,7 +101,6 @@ def option_tree(option):
                 "num_repos": int(input("Repo Max Quantity: ")),
             }
             run_query(reduced_query, variables)
-
 
 if __name__ == '__main__':
     print(""" 
