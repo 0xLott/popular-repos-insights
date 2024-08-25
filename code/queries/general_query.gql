@@ -1,0 +1,38 @@
+query ($num_repos: Int!, $num_issues: Int!, $num_pull_requests: Int!, $num_releases: Int!, $issue_state: IssueState!, $cursor: String!) {
+  search(query: "stars:>1, sort:stars-desc", type: REPOSITORY, first: $num_repos, after: $cursor) {
+    edges {
+      node {
+        ... on Repository {
+          id
+          name
+          stargazerCount
+          createdAt
+          updatedAt
+          releases(first: $num_releases) {
+            totalCount
+          }
+          primaryLanguage {
+            name
+          }
+          pullRequests(states: [MERGED], first: $num_pull_requests) {
+            totalCount
+          }
+          issues(states: [$issue_state], first: $num_issues) {
+            edges {
+              node {
+                closed
+              }
+            }
+          }
+
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
