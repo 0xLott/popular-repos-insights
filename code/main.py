@@ -62,6 +62,10 @@ def dispatch_request(query, variables):
         headers=headers
     )
 
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} - {response.text}")
+        return None
+
     return response
 
 def get_unique_filename(base_path):
