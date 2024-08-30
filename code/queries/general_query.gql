@@ -1,4 +1,4 @@
-query ($num_repos: Int!, $num_issues: Int!, $num_pull_requests: Int!, $num_releases: Int!, $issue_state: IssueState!, $cursor: String!) {
+query ($num_repos: Int!, $num_issues: Int!, $num_pull_requests: Int!, $num_releases: Int!, $issue_states: [IssueState!], $cursor: String!) {
   search(query: "stars:>1, sort:stars-desc", type: REPOSITORY, first: $num_repos, after: $cursor) {
     edges {
       node {
@@ -17,14 +17,13 @@ query ($num_repos: Int!, $num_issues: Int!, $num_pull_requests: Int!, $num_relea
           pullRequests(states: [MERGED], first: $num_pull_requests) {
             totalCount
           }
-          issues(states: [$issue_state], first: $num_issues) {
+          issues(states: $issue_states, first: $num_issues) {
             edges {
               node {
                 closed
               }
             }
           }
-
         }
       }
     }

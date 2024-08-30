@@ -94,10 +94,19 @@ def option_tree(option):
             variables = {
                 "num_repos": int(input("Repo Max Quantity: ")),
                 "num_issues": int(input("Issues Max Quantity: ")),
-                "issue_state": input("Issues State [OPEN, CLOSED]: ").upper(),
                 "num_pull_requests": int(input("Pull Requests Max Quantity: ")),
-                "num_releases": int(input("Releases Max Quantity: "))
+                "num_releases": int(input("Releases Max Quantity: ")),
             }
+
+            issue_input = input("Issues State [OPEN, CLOSED, BOTH]: ").upper()
+
+            if issue_input == "BOTH":
+                variables["issue_states"] = ["OPEN", "CLOSED"]
+            elif issue_input == "OPEN":
+                variables["issue_states"] = ["OPEN"]
+            elif issue_input == "CLOSED":
+                variables["issue_states"] = ["CLOSED"]
+
             run_query(general_query, variables)
 
         case '2':
