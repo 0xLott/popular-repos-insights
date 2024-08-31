@@ -13,7 +13,7 @@ A data-driven analysis of the top 1,000 starred open-source GitHub repositories 
 
 ### RQ-3: "Os sistemas populares lançam releases com frequência?"
 *"Do popular systems release frequently?"*
-- `total_releases_median`: median value of number of releases in the top 1,000 GitHub repos
+- `total_releases_mean`: mean value of number of releases in the top 1,000 GitHub repos
 
 ### RQ-4: "Os sistemas populares são atualizados com frequência?"
 *"Are popular systems updated frequently?"*

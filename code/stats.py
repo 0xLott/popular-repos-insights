@@ -1,4 +1,5 @@
 from datetime import date, datetime, timezone
+from collections import Counter
 import pandas as pd
 import ast
 import json
@@ -59,7 +60,18 @@ def rq_04(basic_data):
     return updated_at_median.round()
 
 # RQ_05
-# main_language_median
+def rq_05(basic_data):
+    languages = []
+
+    for lang in basic_data['primaryLanguage']:
+
+        if pd.isna(lang):   # isna(): detects missing values (NaN)
+            continue
+
+        lang_data = ast.literal_eval(lang)
+        languages.append(lang_data['name'])
+
+    return Counter(languages)
 
 # RQ_06
 # closed_issues_ratio_median
