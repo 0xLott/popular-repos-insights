@@ -29,12 +29,19 @@ def rq_02(prs_data):
         pr_data = ast.literal_eval(pr)
         merged_count.append(pr_data['totalCount'])
     
-    merged_median = pd.Series(merged_count).median()
-    return merged_median
-
+    merged_pull_requests_median = pd.Series(merged_count).median()
+    return merged_pull_requests_median
 
 # RQ_03
-# total_releases_median
+def rq_03(releases_data):
+    total_releases = []
+
+    for release in releases_data['releases']:
+        release_data = ast.literal_eval(release)
+        total_releases.append(release_data['totalCount'])
+        
+    total_releases_mean = pd.Series(total_releases).mean()
+    return total_releases_mean
 
 # RQ_04
 def rq_04(basic_data):

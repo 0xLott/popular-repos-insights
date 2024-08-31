@@ -33,7 +33,7 @@ De forma preliminar, elaborou-se as seguintes hipóteses informais para posterio
 - `merged_pull_requests_median`: valor mediano do número de pull requests incorporadas nos 1.000 principais repositórios do GitHub
 
 #### RQ-3: "Os sistemas populares lançam releases com frequência?"
-- `total_releases_median`: valor mediano do número de releases nos 1.000 principais repositórios do GitHub
+- `total_releases_mean`: valor médio do número de releases nos 1.000 principais repositórios do GitHub
 
 #### RQ-4: "Os sistemas populares são atualizados com frequência?"
 - `last_updated_median`: valor mediano de minutos desde a última atualização dos 1.000 principais repositórios do GitHub
