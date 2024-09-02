@@ -24,6 +24,8 @@ def rq_01(data):
     plt.title('Distribuição de Idade dos Repositórios')
     plt.xlabel('Idade (Dias)')
     plt.ylabel('Frequência')
+
+    plt.savefig('./plots/rq_01.jpg')
     plt.show()
 
     return created_at_median
@@ -44,6 +46,8 @@ def rq_02(data):
     plt.title('Distribuição de PRs Mergidas')
     plt.xlabel('Numero de PRs Mergidas')
     plt.ylabel('Frequência')
+
+    plt.savefig('./plots/rq_02.jpg')
     plt.show()
 
     return merged_pull_requests_median
@@ -64,6 +68,8 @@ def rq_03(data):
     plt.title('Distribuição do Total de Releases')
     plt.xlabel('Número de Releases')
     plt.ylabel('Frequência')
+
+    plt.savefig('./plots/rq_03.jpg')
     plt.show()
 
     return total_releases_mean
@@ -88,6 +94,8 @@ def rq_04(data):
     plt.title('Distribuição de Minutos Desde a Ultima Atualização')
     plt.xlabel('Minutos')
     plt.ylabel('Frequência')
+
+    plt.savefig('./plots/rq_04.jpg')
     plt.show()
 
     return np.round(updated_at_median)
@@ -119,6 +127,7 @@ def rq_05(data):
     plt.gca().margins(x=0.01)
     plt.subplots_adjust(bottom=0.2)
 
+    plt.savefig('./plots/rq_05.jpg')
     plt.show()
 
     return language_counts
@@ -146,16 +155,18 @@ def rq_06(data):
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')
     plt.title('Issues Abertas x Fechadas')
+
+    plt.savefig('./plots/rq_06.jpg')
     plt.show()
 
     return closed_issues_percentage
 
 
 if __name__ == '__main__':
-    basic_data = pd.read_csv('queries/results/results-0.csv')  # id, name, stars, createdAt, updatedAt, primaryLanguage
-    issues_data = pd.read_csv('queries/results/results-1.csv')  # id, name, stars, createdAt, updatedAt, primaryLanguage, issues
-    prs_data = pd.read_csv('queries/results/results-2.csv')  # id, name, stars, createdAt, updatedAt, primaryLanguage, pullRequests
-    releases_data = pd.read_csv('queries/results/results-2.csv')  # id, name, stars, createdAt, updatedAt, releases, primaryLanguage
+    basic_data = pd.read_csv('queries/results/results-0.csv')     # id, name, stars, createdAt, updatedAt, primaryLanguage
+    issues_data = pd.read_csv('queries/results/results-1.csv')    # id, name, stars, createdAt, updatedAt, primaryLanguage, issues
+    prs_data = pd.read_csv('queries/results/results-2.csv')       # id, name, stars, createdAt, updatedAt, primaryLanguage, pullRequests
+    releases_data = pd.read_csv('queries/results/results-3.csv')  # id, name, stars, createdAt, updatedAt, releases, primaryLanguage
 
     rq_01(basic_data)
     rq_02(prs_data)
