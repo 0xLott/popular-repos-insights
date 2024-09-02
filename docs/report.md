@@ -42,13 +42,24 @@ De forma preliminar, elaborou-se as seguintes hipóteses informais para posterio
 
 - `main_language`: frequência das principais linguagens de programação usadas nos 1.000 principais repositórios do GitHub
 
-#### RQ-6: "Os sistemas populares possuem um alto percentual de questões fechadas?"
+#### RQ-6: "Os sistemas populares possuem um alto percentual de issues fechadas?"
 
-1. `all_issues`: quantidade total de problemas dos 1.000 principais repositórios do GitHub
-2. `closed_issues`: quantidade de problemas fechados dos 1.000 principais repositórios do GitHub
-3. `closed_issues_ratio`: razão de questões fechadas, definido por:
+1. `all_issues`: quantidade total de issues dos 1.000 principais repositórios do GitHub
+2. `closed_issues`: quantidade de issues fechadas dos 1.000 principais repositórios do GitHub
+3. `closed_issues_ratio`: razão de issues fechadas, definido por:
   ```math
     closed\_issues\_ratio = \frac{closed\_issues}{all\_issues}
   ```
 
-- `closed_issues_ratio_median`: mediana da razão de problemas fechados dos 1.000 principais repositórios do GitHub
+- `closed_issues_ratio_median`: mediana das razões de issues fechadas dos 1.000 principais repositórios do GitHub
+
+
+## 4. Resultados
+| **RQ**   | **Métrica**                 | **Valor encontrado**                                                                                                                                                 |
+|----------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `RQ-1`   | `created_at_median`         | 2970.0 dias                                                                                                                                               |
+| `RQ-2`   | `merged_pull_requests_median` | 1100.5 PRs mergeadas                                                                                                                                     |
+| `RQ-3`   | `total_releases_mean`       | 37.42 releases                                                                                                                                            |
+| `RQ-4`   | `last_updated_median`       | 11444.0 minutos = 190.7 horas                                                                                                                             |
+| `RQ-5`   | `main_language`             | Python (163), JavaScript (157), TypeScript (132), Go (75), Java (59), C++ (51), Rust (36), C (24), Shell (23), Jupyter Notebook (21), HTML (18), C# (14), Ruby (14), Swift (13), Kotlin (10), PHP (9), CSS (8), Vue (6), MDX (6), Dart (5), Markdown (4), Vim Script (4), Clojure (4), Dockerfile (3), TeX (3), Batchfile (2), Zig (2), Scala (2), Assembly (2), Makefile (2), Lua (2), Svelte (2), Haskell (2), Objective-C (2), Nunjucks (1), Julia (1), Astro (1), Roff (1), V (1), SCSS (1), Jinja (1), LLVM (1), Less (1), Elixir (1) |
+| `RQ-6`   | `closed_issues_ratio_median` | 95.86% de issues fechadas                                                                                                                                 |
