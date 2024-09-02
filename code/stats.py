@@ -19,6 +19,8 @@ def rq_01(data):
 
     created_at_median = np.median(repo_age)
 
+    plt.clf()
+
     plt.hist(repo_age, bins=30, color='skyblue', edgecolor='black')
     plt.axvline(created_at_median, color='red', linestyle='dashed', linewidth=1)
     plt.title('Distribuição de Idade dos Repositórios')
@@ -63,6 +65,8 @@ def rq_03(data):
 
     total_releases_mean = np.mean(total_releases)
 
+    plt.clf()
+
     plt.hist(total_releases, bins=30, color='salmon', edgecolor='black')
     plt.axvline(total_releases_mean, color='red', linestyle='dashed', linewidth=1)
     plt.title('Distribuição do Total de Releases')
@@ -89,6 +93,8 @@ def rq_04(data):
 
     updated_at_median = np.median(minutes_since_update)
 
+    plt.clf()
+
     plt.hist(minutes_since_update, bins=30, color='orange', edgecolor='black')
     plt.axvline(updated_at_median, color='red', linestyle='dashed', linewidth=1)
     plt.title('Distribuição de Minutos Desde a Ultima Atualização')
@@ -113,6 +119,8 @@ def rq_05(data):
         languages.append(lang_data['name'])
 
     language_counts = Counter(languages)
+
+    plt.clf()
 
     plt.figure(figsize=(12, 8))
     plt.bar(language_counts.keys(), language_counts.values(), color='purple', width=0.7)
@@ -151,6 +159,8 @@ def rq_06(data):
     labels = ['Issues Fechadas', 'Issues Abertas']
     sizes = [closed_issues_percentage, 100 - closed_issues_percentage]
     colors = ['lightblue', 'lightcoral']
+
+    plt.clf()
 
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')
